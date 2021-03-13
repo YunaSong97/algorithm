@@ -1,0 +1,45 @@
+import sys
+sys.setrecursionlimit(100000)
+
+dx = [1, 0, -1, 0]
+dy = [0, 1, 0, -1]
+cnt = 0
+ismove = False
+
+N, L, R = map(int, input().split())
+M = [list(map(int, input().split())) for _ in range(N)]
+V = [[0]*N for _ in range(N)]
+
+def migration(row, col) :
+  V[row][col] = 1
+  global ismove
+  
+  for i in range(4) :
+    x = col + dx[i]
+    y = row + dy[i]
+    if(0<=x<N and 0<=y<N and V[y][x] == 0 and L<=abs(M[y][x] - M[row][col])<=R) :
+      ismove = True
+      stack.append([y, x])
+      migration(y, x)
+  
+while(1) : 
+  ismove = False
+  V = [[0]*N for _ in range(N)]
+  for i in range(N) :
+    for j in range(N) :
+      stack = []
+
+      if(V[i][j] == 0) :
+        stack.append([i, j])
+        migration(i, j)
+        if(len(stack) > 1) :
+          avg = sum([M[x][y] for x, y in stack])//len(stack)
+          for x, y in stack :
+            M[x][y] = avg
+
+  if (ismove == False) :
+    break
+  
+  cnt += 1
+
+print(cnt)
