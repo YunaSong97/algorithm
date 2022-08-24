@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/[1959] 두 개의 숫자열" isTestSource="false" packagePrefix="SWEA" />
+      <sourceFolder url="file://$MODULE_DIR$/[1961] 숫자 배열 회전" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/[1974] 스도쿠 검증" isTestSource="false" packagePrefix="SWEA" />
+      <sourceFolder url="file://$MODULE_DIR$/[1979] 어디에 단어가 들어갈 수 있을까" isTestSource="false" packagePrefix="SWEA" />
+      <sourceFolder url="file://$MODULE_DIR$/[2001] 파리 퇴치" isTestSource="false" packagePrefix="SWEA" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
