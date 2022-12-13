@@ -16,7 +16,7 @@ class Node {
     }
 }
 
-public class Main {
+public class Main_BOJ_18500 {
     static int R;
     static int C;
     static int N;
