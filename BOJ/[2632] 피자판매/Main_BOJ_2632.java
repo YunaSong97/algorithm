@@ -9,54 +9,43 @@ public class Main_BOJ_2632 {
     static int[] A;
     static int[] B;
     static int answer = 0;
-    static HashMap<Integer, Integer> mapA;
-    static HashMap<Integer, Integer> mapB;
+
+    static int[] Asum;
+    static int[] Bsum;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        N = Integer.parseInt(br.readLine());
 
         StringTokenizer st = new StringTokenizer(br.readLine());
-        N = Integer.parseInt(st.nextToken());
-
-        st = new StringTokenizer(br.readLine());
         m = Integer.parseInt(st.nextToken());
         n = Integer.parseInt(st.nextToken());
         A = new int[m];
         B = new int[n];
-        mapA = new HashMap<>();
-        mapB = new HashMap<>();
+        Asum = new int[2000001];
+        Bsum = new int[2000001];
 
         for (int i = 0; i < m; i++) {
-            st = new StringTokenizer(br.readLine());
-            A[i] = Integer.parseInt(st.nextToken());
+            A[i] = Integer.parseInt(br.readLine());
         }
 
         for (int i = 0; i < n; i++) {
-            st = new StringTokenizer(br.readLine());
-            B[i] = Integer.parseInt(st.nextToken());
+            B[i] = Integer.parseInt(br.readLine());
         }
 
-        makeMap(mapA, A, m);
-        makeMap(mapB, B, n);
+        makeMap(Asum, A, m);
+        makeMap(Bsum, B, n);
+        Asum[0] = 1;
+        Bsum[0] = 1;
 
-        for (Map.Entry<Integer, Integer> entry : mapA.entrySet()) {
-            if (N - entry.getKey() == 0) {
-                answer += entry.getValue();
-            } else {
-                answer += entry.getValue() * mapB.getOrDefault(N - entry.getKey(), 0);
-            }
-        }
-
-        for (Map.Entry<Integer, Integer> entry : mapB.entrySet()) {
-            if (N - entry.getKey() == 0) {
-                answer += entry.getValue();
-            }
+        for (int i = 0; i <= N; i++) {
+            answer += Asum[i] * Bsum[N - i];
         }
 
         System.out.println(answer);
     }
 
-    static void makeMap(HashMap<Integer, Integer> hashMap, int[] ary, int size) {
+    static void makeMap(int[] sumAry, int[] ary, int size) {
         for (int start = 0; start < size; start++) {
             int sum = 0;
 
@@ -67,7 +56,7 @@ public class Main_BOJ_2632 {
                 sum += ary[end % size];
 
                 if (sum <= N) {
-                    hashMap.put(sum, hashMap.getOrDefault(sum, 0) + 1);
+                    sumAry[sum]++;
                 } else {
                     break;
                 }
